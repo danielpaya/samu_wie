@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lunes de Datos WIE</title>
+<link rel="stylesheet" href="css/estudio.css">
+</head>
+<body>
+<main class="wrap">
+  <header>
+    <p class="eyebrow">IEEE WIE · Lunes de Datos</p>
+    <h1>Estudio de historias</h1>
+    <p class="lede">Escribe el dato curioso o la fecha importante, mira la historia animada y descárgala como video para Instagram.</p>
+  </header>
+
+  <div class="studio">
+    <section class="stage" aria-label="Vista previa">
+      <canvas id="story" width="1080" height="1920" aria-label="Vista previa de la historia"></canvas>
+      <p class="size">1080 × 1920 · vista previa en vivo</p>
+    </section>
+
+    <section class="panel">
+      <div class="tabs" role="tablist" aria-label="Plantilla">
+        <button id="tab-a" role="tab" aria-selected="true" aria-controls="panel-a">¿Sabías que…?</button>
+        <button id="tab-b" role="tab" aria-selected="false" aria-controls="panel-b">Un día como hoy</button>
+      </div>
+
+      <div class="card" id="panel-a" role="tabpanel" aria-labelledby="tab-a">
+        <h2>El dato curioso</h2>
+        <div class="pair">
+          <div class="field"><label for="f-num">Dato n.º</label><input type="text" id="f-num" maxlength="4"></div>
+          <div class="field" style="grid-column:span 2"><label for="f-catA">Categoría</label><select id="f-catA"><option>INGENIERÍA</option><option>CIENCIA</option><option>TECNOLOGÍA</option><option>MATEMÁTICAS</option><option>HISTORIA</option><option>MUJERES EN STEM</option><option>EFEMÉRIDE</option></select></div>
+        </div>
+        <div class="field"><label for="f-fact">El dato</label><textarea id="f-fact" maxlength="170"></textarea><small>Máximo 170 caracteres. La tira de papel crece según el texto.</small></div>
+        <div class="field"><label for="f-source">Fuente</label><input type="text" id="f-source" maxlength="60"><small>Opcional. Déjala vacía para no mostrarla.</small></div>
+        <div class="field">
+          <span class="legend">Foto o ilustración</span>
+          <div class="row">
+            <label class="file" for="f-photo">Subir foto<input type="file" id="f-photo" accept="image/*"></label>
+            <button class="ghost" id="clear-photo" type="button" hidden>Quitar foto</button>
+          </div>
+          <small id="photo-note">Sin foto se muestran los puntos en ondas. La etiqueta no sale en la descarga.</small>
+        </div>
+        <div class="field">
+          <span class="legend">Estilo de la foto</span>
+          <div class="seg">
+            <label><input type="radio" name="f-mode" id="mode-dots" value="dots" checked> Puntos en ondas</label>
+            <label><input type="radio" name="f-mode" id="mode-photo" value="photo"> Foto teñida</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" id="panel-b" role="tabpanel" aria-labelledby="tab-b" hidden>
+        <h2>La fecha importante</h2>
+        <div class="pair">
+          <div class="field"><label for="f-day">Día</label><input type="text" id="f-day" maxlength="2" inputmode="numeric"></div>
+          <div class="field"><label for="f-month">Mes</label><select id="f-month"><option value="0">Enero</option><option value="1">Febrero</option><option value="2">Marzo</option><option value="3">Abril</option><option value="4">Mayo</option><option value="5">Junio</option><option value="6">Julio</option><option value="7">Agosto</option><option value="8">Septiembre</option><option value="9">Octubre</option><option value="10">Noviembre</option><option value="11">Diciembre</option></select></div>
+          <div class="field"><label for="f-year">Año</label><input type="text" id="f-year" maxlength="5" inputmode="numeric"></div>
+        </div>
+        <div class="field"><label for="f-catB">Categoría</label><select id="f-catB"><option>INGENIERÍA</option><option>CIENCIA</option><option>TECNOLOGÍA</option><option>MATEMÁTICAS</option><option>HISTORIA</option><option>MUJERES EN STEM</option><option>EFEMÉRIDE</option></select></div>
+        <div class="field"><label for="f-title">Qué pasó</label><input type="text" id="f-title" maxlength="60"></div>
+        <div class="field"><label for="f-desc">Por qué importa</label><textarea id="f-desc" maxlength="170"></textarea><small>Máximo 170 caracteres.</small></div>
+      </div>
+
+      <div class="card">
+        <h2>Para publicar</h2>
+        <div class="field"><label for="f-handle">Cuenta de Instagram</label><input type="text" id="f-handle" maxlength="30" autocomplete="off"></div>
+        <div class="field">
+          <span class="legend">Duración del video</span>
+          <div class="seg">
+            <label><input type="radio" name="f-dur" id="dur-10" value="10" checked> 10 segundos</label>
+            <label><input type="radio" name="f-dur" id="dur-15" value="15"> 15 segundos</label>
+          </div>
+        </div>
+        <div class="actions">
+          <div class="btns">
+            <button class="primary" id="btn-video" type="button">Descargar video</button>
+            <button class="secondary" id="btn-png" type="button">Descargar imagen</button>
+          </div>
+          <div class="meter" aria-hidden="true"><span id="meter"></span></div>
+          <p class="status" id="status" role="status" aria-live="polite"></p>
+          <p class="tip">El video se arma cuadro por cuadro, así sale fluido. En Instagram, pon el sticker de encuesta o de preguntas encima del recuadro blanco.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+<script src="vendor/mp4-muxer.js"></script>
+<script src="js/logos.js"></script>
+<script src="js/estudio.js"></script>
+</body>
+</html>
